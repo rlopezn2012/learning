@@ -1,0 +1,26 @@
+# Spring properties
+spring:
+  application:
+     name: facturadb  # Service registers under this name
+  jackson:
+     default-property-inclusion: non_null
+     serialization:
+       fail-on-empty-beans: false
+       WRITE_DATES_AS_TIMESTAMPS: false
+  # Hibernate Properties
+  datasource:
+    url: jdbc:postgresql://localhost:5432/bd?serverTimezone=Eastern&useLegacyDatetimeCode=false&zeroDateTimeBehavior=convertToNull&autoReconnect=true
+    username: postgres
+    password: admin
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL95Dialect # The SQL dialect makes Hibernate generate better SQL for the chosen database
+        jdbc:
+           time_zone: US/Eastern
+    hibernate:
+      ddl-auto: update # Hibernate ddl auto (create, create-drop, validate, update)
+
+# HTTP Server
+server:
+  port: 8080   # HTTP (Tomcat) port
